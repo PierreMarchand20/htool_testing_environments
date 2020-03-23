@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+    ubuntu_openmpi:
+        build:
+            context: ./Ubuntu
+            target: ubuntu_openmpi
+
+    ubuntu_mpich:
+        build:
+            context: ./Ubuntu
+            target: ubuntu_mpich
+
+    debian_openmpi:
+        build:
+            context: ./Debian
+            target: debian_openmpi
+
+    debian_mpich:
+        build:
+            context: ./Debian
+            target: debian_mpich

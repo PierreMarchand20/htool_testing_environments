@@ -15,7 +15,7 @@ RUN apt-get update \
         python3-pip \
     && cd ~ \
     && wget https://cmake.org/files/v3.16/cmake-3.16.5.tar.gz \
-    && tar -xzvf cmake-3.16.5.tar.gz && cd cmake-3.16.5 \
+    && tar -xzf cmake-3.16.5.tar.gz && cd cmake-3.16.5 \
     && ./bootstrap && make -j2 && make install \
     && pip3 install pytest
 

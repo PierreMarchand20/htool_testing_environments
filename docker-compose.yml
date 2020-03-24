@@ -2,28 +2,28 @@ version: '3.4'
 
 services:
     ubuntu_openmpi:
-        image: htool_testing_environment:ubuntu_openmpi
+        image: pierremarchand/htool_testing_environments:ubuntu_openmpi
         build:
             context: ./Ubuntu
             target: ubuntu_openmpi
         
 
     ubuntu_mpich:
-        image: htool_testing_environment:ubuntu_mpich
+        image: pierremarchand/htool_testing_environments:ubuntu_mpich
         build:
             context: ./Ubuntu
             target: ubuntu_mpich
         
 
     debian_openmpi:
-        image: htool_testing_environment:debian_openmpi
+        image: pierremarchand/htool_testing_environments:debian_openmpi
         build:
             context: ./Debian
             target: debian_openmpi
         
 
     debian_mpich:
-        image: htool_testing_environment:debian_mpich
+        image: pierremarchand/htool_testing_environments:debian_mpich
         build:
             context: ./Debian
             target: debian_mpich

@@ -1,4 +1,4 @@
-# Testing environments for [Htool](https://github.com/PierreMarchand20/htool) [![Docker Automated](https://img.shields.io/docker/cloud/automated/pierremarchand/htool_testing_environments)](https://img.shields.io/docker/cloud/automated/pierremarchand/htool_testing_environments) [![Docker Build](https://img.shields.io/docker/cloud/build/pierremarchand/htool_testing_environments)](https://img.shields.io/docker/cloud/build/pierremarchand/htool_testing_environments)
+# Testing environments for [Htool](https://github.com/PierreMarchand20/htool) [![Docker Automated](https://img.shields.io/docker/cloud/automated/pierremarchand/htool_testing_environments.svg)](https://img.shields.io/docker/cloud/automated/pierremarchand/htool_testing_environments) [![Docker Build](https://img.shields.io/docker/cloud/build/pierremarchand/htool_testing_environments.svg)](https://img.shields.io/docker/cloud/build/pierremarchand/htool_testing_environments)
 
 Four environments are defined via Docker images to test [Htool](https://github.com/PierreMarchand20/htool) with several MPI implementations:
 

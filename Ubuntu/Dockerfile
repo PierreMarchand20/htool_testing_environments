@@ -13,12 +13,13 @@ RUN apt-get update \
         cmake \
         gcc g++\
         clang\
+        clang-format\
         libblas-dev \
         liblapack-dev \
         libsuitesparse-dev \
         python3-pip python3-dev\
     && rm -rf /var/lib/apt/lists/* \
-    && pip3 --no-cache-dir install pytest wheel setuptools
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang
 
 
 FROM ubuntu_base AS ubuntu_openmpi

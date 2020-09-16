@@ -53,3 +53,25 @@ jobs:
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_mpich
                     # cache-from: type=local,src=/tmp/.buildx-cache
                     # cache-to: type=local,dest=/tmp/.buildx-cache
+
+            -
+                name: Build and push Debian image with openmpi
+                uses: docker/build-push-action@v2
+                with:
+                    push: true
+                    file: ./Debian/Dockerfile
+                    target: debian_openmpi
+                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_openpi
+                    # cache-from: type=local,src=/tmp/.buildx-cache
+                    # cache-to: type=local,dest=/tmp/.buildx-cache
+
+            -
+                name: Build and push Debian image with mpich
+                uses: docker/build-push-action@v2
+                with:
+                    push: true
+                    file: ./Debian/Dockerfile
+                    target: debian_mpich
+                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_mpich
+                    # cache-from: type=local,src=/tmp/.buildx-cache
+                    # cache-to: type=local,dest=/tmp/.buildx-cache

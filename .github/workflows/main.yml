@@ -39,7 +39,7 @@ jobs:
                     push: true
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_openmpi
-                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openpi
+                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openmpi
                     cache-from: type=local,src=/tmp/.buildx-cache
                     cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -61,7 +61,7 @@ jobs:
                     push: true
                     file: ./Debian/Dockerfile
                     target: debian_openmpi
-                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_openpi
+                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_openmpi
                     cache-from: type=local,src=/tmp/.buildx-cache
                     cache-to: type=local,dest=/tmp/.buildx-cache
 

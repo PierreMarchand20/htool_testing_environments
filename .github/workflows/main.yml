@@ -41,5 +41,5 @@ jobs:
                     push: true
                     context: ./Ubuntu
                     tags: pierremarchand/htool_testing_environments:ubuntu_openpi,pierremarchand/htool_testing_environments:ubuntu_mpich
-                    cache-from: type=local,src=/tmp/.buildx-cache
-                    cache-to: type=local,dest=/tmp/.buildx-cache
+                    # cache-from: type=local,src=/tmp/.buildx-cache
+                    # cache-to: type=local,dest=/tmp/.buildx-cache

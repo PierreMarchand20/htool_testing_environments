@@ -41,7 +41,7 @@ jobs:
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_openmpi
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openmpi
-                    # cache-from: type=local,src=/tmp/.buildx-cache
+                    cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openmpi
                     # cache-to: type=local,dest=/tmp/.buildx-cache
 
             -
@@ -53,7 +53,7 @@ jobs:
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_mpich
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_mpich
-                    # cache-from: type=local,src=/tmp/.buildx-cache
+                    # cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_mpich
                     # cache-to: type=local,dest=/tmp/.buildx-cache
 
             -

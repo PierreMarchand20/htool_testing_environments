@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-docker-compose push
+docker-compose push ubuntu_base
+docker-compose push debian_base
+docker-compose push $DOCKER_TAG

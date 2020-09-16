@@ -28,7 +28,6 @@ jobs:
                 uses: docker/build-push-action@v2
                 with:
                     push: true
-                    pull: true
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_openmpi
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openmpi

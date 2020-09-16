@@ -1,4 +1,4 @@
-# Testing environments for [Htool](https://github.com/PierreMarchand20/htool) ![Docker building](https://github.com/htool-ddm/htool_testing_environments/workflows/ci/badge.svg)
+# Testing environments for [Htool](https://github.com/PierreMarchand20/htool) ![Docker building](https://github.com/htool-ddm/htool_testing_environments/workflows/Building%20Docker%20images/badge.svg)
 
 Four environments are defined via Docker images to test [Htool](https://github.com/PierreMarchand20/htool) with several MPI implementations:
 

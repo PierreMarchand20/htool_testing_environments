@@ -1,4 +1,4 @@
-name: ci
+name: Building Docker images
 
 on:
   push:
@@ -40,8 +40,8 @@ jobs:
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_openmpi
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_openpi
-                    # cache-from: type=local,src=/tmp/.buildx-cache
-                    # cache-to: type=local,dest=/tmp/.buildx-cache
+                    cache-from: type=local,src=/tmp/.buildx-cache
+                    cache-to: type=local,dest=/tmp/.buildx-cache
 
             -
                 name: Build and push Ubuntu image with mpich
@@ -51,8 +51,8 @@ jobs:
                     file: ./Ubuntu/Dockerfile
                     target: ubuntu_mpich
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:ubuntu_mpich
-                    # cache-from: type=local,src=/tmp/.buildx-cache
-                    # cache-to: type=local,dest=/tmp/.buildx-cache
+                    cache-from: type=local,src=/tmp/.buildx-cache
+                    cache-to: type=local,dest=/tmp/.buildx-cache
 
             -
                 name: Build and push Debian image with openmpi
@@ -62,8 +62,8 @@ jobs:
                     file: ./Debian/Dockerfile
                     target: debian_openmpi
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_openpi
-                    # cache-from: type=local,src=/tmp/.buildx-cache
-                    # cache-to: type=local,dest=/tmp/.buildx-cache
+                    cache-from: type=local,src=/tmp/.buildx-cache
+                    cache-to: type=local,dest=/tmp/.buildx-cache
 
             -
                 name: Build and push Debian image with mpich
@@ -73,5 +73,5 @@ jobs:
                     file: ./Debian/Dockerfile
                     target: debian_mpich
                     tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:debian_mpich
-                    # cache-from: type=local,src=/tmp/.buildx-cache
-                    # cache-to: type=local,dest=/tmp/.buildx-cache
+                    cache-from: type=local,src=/tmp/.buildx-cache
+                    cache-to: type=local,dest=/tmp/.buildx-cache

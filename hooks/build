@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-docker-compose build ubuntu_base
-docker-compose build debian_base
-docker-compose build $DOCKER_TAG

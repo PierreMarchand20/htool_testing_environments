@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-docker-compose pull ubuntu_base
-docker-compose pull debian_base

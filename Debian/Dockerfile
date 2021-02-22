@@ -2,10 +2,8 @@ FROM debian:buster-20200908-slim AS debian_base
 
 WORKDIR /root
 
-RUN DEBIAN_FRONTEND="noninteractive" \
-    TZ=Europe/Paris \
-    && apt-get update \
-    && apt-get install -y  --no-install-recommends \
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends \
         ca-certificates \
         wget \
         ssh \
@@ -20,12 +18,7 @@ RUN DEBIAN_FRONTEND="noninteractive" \
         liblapack-dev \
         libsuitesparse-dev \
         python3-pip python3-dev \
-        locales\
-    && rm -rf /var/lib/apt/lists/* \
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
-ENV LANG en_US.utf8
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang
 
 FROM debian_base AS debian_openmpi
 

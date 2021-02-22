@@ -3,6 +3,7 @@ FROM debian:buster-20200908-slim AS debian_base
 WORKDIR /root
 
 RUN DEBIAN_FRONTEND="noninteractive" \
+    TZ=Europe/Paris \
     && apt-get update \
     && apt-get install -y  --no-install-recommends \
         ca-certificates \

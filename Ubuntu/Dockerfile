@@ -3,6 +3,7 @@ FROM ubuntu:focal-20210119 AS ubuntu_base
 WORKDIR /root
 
 RUN DEBIAN_FRONTEND="noninteractive" \
+    TZ=Europe/Paris \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \

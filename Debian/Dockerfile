@@ -18,6 +18,8 @@ RUN apt-get update \
         liblapack-dev \
         libsuitesparse-dev \
         python3-pip python3-dev \
+        # needed for openmp with clang
+        libomp-dev \
     && pip3 --no-cache-dir install pytest wheel setuptools cmakelang
 
 FROM debian_base AS debian_openmpi

@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20200807 AS ubuntu_base
+FROM ubuntu:focal-20210119 AS ubuntu_base
 
 WORKDIR /root
 

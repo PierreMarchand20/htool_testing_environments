@@ -11,7 +11,7 @@ RUN apt-get update \
         git \
         make \
         cmake \
-        gcc g++\
+        gcc g++ lcov\
         clang\
         clang-format\
         libblas-dev \

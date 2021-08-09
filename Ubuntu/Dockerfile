@@ -20,7 +20,7 @@ RUN apt-get update \
         python3-pip python3-dev\
         # needed for openmp with clang
         libomp-dev \
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang mpi4py
 
 FROM ubuntu_base AS ubuntu_openmpi
 

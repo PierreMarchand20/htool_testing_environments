@@ -28,6 +28,7 @@ WORKDIR /root
 
 RUN apt-get update \
     && apt-get install -y  --no-install-recommends openmpi-bin libopenmpi-dev \
+    && pip3 --no-cache-dir install mpi4py \
     && rm -rf /var/lib/apt/lists/*
 
 FROM ubuntu_base AS ubuntu_mpich
@@ -36,4 +37,5 @@ WORKDIR /root
 
 RUN apt-get update \
     && apt-get install -y  --no-install-recommends mpich libmpich-dev \
+    && pip3 --no-cache-dir install mpi4py \
     && rm -rf /var/lib/apt/lists/*

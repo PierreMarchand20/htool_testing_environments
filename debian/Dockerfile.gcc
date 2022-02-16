@@ -1,0 +1,47 @@
+FROM debian:buster-20200908-slim AS debian_base
+
+WORKDIR /root
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends \
+    ca-certificates \
+    wget \
+    ssh \
+    libssl-dev \
+    git \
+    make \
+    cmake \
+    python3-pip python3-dev \
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang \
+    && rm -rf /var/lib/apt/lists/*
+
+
+FROM debian_base AS debian_gcc
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends \
+    gcc g++ gfortran lcov\
+    clang-format\
+    libblas-dev \
+    liblapack-dev \
+    libsuitesparse-dev \
+    doxygen \
+    && pip3 --no-cache-dir install scipy numpy \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM debian_gcc AS debian_gcc_openmpi
+
+WORKDIR /root
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends openmpi-bin libopenmpi-dev \
+    && pip3 --no-cache-dir install mpi4py \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM debian_gcc AS debian_gcc_mpich
+
+WORKDIR /root
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends mpich libmpich-dev \
+    && pip3 --no-cache-dir install mpi4py \
+    && rm -rf /var/lib/apt/lists/*

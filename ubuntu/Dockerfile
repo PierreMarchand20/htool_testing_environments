@@ -11,22 +11,20 @@ RUN apt-get update \
     git \
     make \
     cmake \
-    python3-pip python3-dev\
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang
-
-FROM ubuntu_base AS ubuntu_gcc
-RUN apt-get update \
-    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends \
     gcc g++ gfortran lcov\
+    clang \
     clang-format\
     libblas-dev \
     liblapack-dev \
     libsuitesparse-dev \
+    libomp-dev \
     doxygen \
-    && pip3 --no-cache-dir install scipy numpy \
+    python3-pip python3-dev\
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu_gcc AS ubuntu_gcc_openmpi
+
+FROM ubuntu_base AS ubuntu_openmpi
 
 WORKDIR /root
 
@@ -35,7 +33,7 @@ RUN apt-get update \
     && pip3 --no-cache-dir install mpi4py \
     && rm -rf /var/lib/apt/lists/*
 
-FROM ubuntu_gcc AS ubuntu_gcc_mpich
+FROM ubuntu_base AS ubuntu_mpich
 
 WORKDIR /root
 

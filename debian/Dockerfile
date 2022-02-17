@@ -11,24 +11,20 @@ RUN apt-get update \
     git \
     make \
     cmake \
-    python3-pip python3-dev \
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang \
-    && rm -rf /var/lib/apt/lists/*
-
-
-FROM debian_base AS debian_gcc
-RUN apt-get update \
-    && DEBIAN_FRONTEND="noninteractive" apt-get install -y  --no-install-recommends \
-    gcc g++ gfortran lcov\
+    gcc g++ lcov\
+    clang\
     clang-format\
     libblas-dev \
     liblapack-dev \
     libsuitesparse-dev \
+    python3-pip python3-dev \
+    # needed for openmp with clang
+    libomp-dev \
     doxygen \
-    && pip3 --no-cache-dir install scipy numpy \
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*
 
-FROM debian_gcc AS debian_gcc_openmpi
+FROM debian_base AS debian_openmpi
 
 WORKDIR /root
 
@@ -37,7 +33,7 @@ RUN apt-get update \
     && pip3 --no-cache-dir install mpi4py \
     && rm -rf /var/lib/apt/lists/*
 
-FROM debian_gcc AS debian_gcc_mpich
+FROM debian_base AS debian_mpich
 
 WORKDIR /root
 

@@ -21,6 +21,7 @@ RUN apt-get update \
     # needed for openmp with clang
     libomp-dev \
     doxygen \
+    && pip3 --no-cache-dir install --upgrade pip \
     && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*
 

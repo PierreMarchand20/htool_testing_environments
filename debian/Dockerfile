@@ -92,7 +92,7 @@ FROM debian_base AS debian_gcc_mpich
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
 ARG MPICH_VERSION="4.0.2"
-ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f77 --disable-f90"
+ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f77 --disable-fc"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
 # Download, build, and install MPICH
@@ -122,7 +122,7 @@ FROM debian_base AS debian_clang_mpich
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
 ARG MPICH_VERSION="4.0.2"
-ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f77 --disable-f90"
+ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f77 --disable-fc"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
 # Download, build, and install MPICH

@@ -31,7 +31,7 @@ FROM debian_base AS debian_gcc_openmpi
 # These options are passed to the steps below
 ARG OPENMPI_VERSION="4.1.3"
 ARG OPENMPI_MAJOR_VERSION="v4.1"
-ARG OPENMPI_CONFIGURE_OPTIONS
+ARG OPENMPI_CONFIGURE_OPTIONS="--disable-mpi-fortran"
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
 # Download, build, and install OPENMPI
@@ -61,7 +61,7 @@ FROM debian_base AS debian_clang_openmpi
 # These options are passed to the steps below
 ARG OPENMPI_VERSION="4.1.3"
 ARG OPENMPI_MAJOR_VERSION="v4.1"
-ARG OPENMPI_CONFIGURE_OPTIONS
+ARG OPENMPI_CONFIGURE_OPTIONS="--disable-mpi-fortran"
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
 # Download, build, and install OPENMPI

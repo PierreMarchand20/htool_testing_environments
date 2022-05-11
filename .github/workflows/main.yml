@@ -14,6 +14,10 @@ jobs:
         cc: [gcc, clang]
         mpi: [openmpi, mpich]
         os: [ubuntu, debian]
+        exclude:
+          - cc: clang
+            mpi: mpich
+            os: debian
 
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[main skip]')"

@@ -12,18 +12,47 @@ jobs:
     strategy:
       matrix:
         include:
-          - name: "Ubuntu OpenMPI"
+          - name: "Ubuntu gcc OpenMPI"
+            cc: gcc
+            cxx: g++
             mpi: openmpi
             os: ubuntu
-          - name: "Ubuntu MPICH"
+          - name: "Ubuntu clang OpenMPI"
+            cc: clang
+            cxx: clang++
+            mpi: openmpi
+            os: ubuntu
+          - name: "Ubuntu gcc MPICH"
+            cc: gcc
+            cxx: g++
             mpi: mpich
             os: ubuntu
-          - name: "Debian OpenMPI"
+          - name: "Ubuntu clang MPICH"
+            cc: clang
+            cxx: clang++
+            mpi: mpich
+            os: ubuntu
+          - name: "Ubuntu gcc OpenMPI"
+            cc: gcc
+            cxx: g++
             mpi: openmpi
             os: debian
-          - name: "Debian MPICH"
+          - name: "Ubuntu clang OpenMPI"
+            cc: clang
+            cxx: clang++
+            mpi: openmpi
+            os: debian
+          - name: "Ubuntu gcc MPICH"
+            cc: gcc
+            cxx: g++
             mpi: mpich
             os: debian
+          - name: "Ubuntu clang MPICH"
+            cc: clang
+            cxx: clang++
+            mpi: mpich
+            os: debian
+
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[main skip]')"
     steps:
@@ -44,7 +73,7 @@ jobs:
         with:
           push: true
           file: ./${{ matrix.os }}/Dockerfile
-          target: ${{ matrix.os }}_${{ matrix.mpi }}
+          target: ${{ matrix.os }}_${{ matrix.cxx }}_${{ matrix.mpi }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.mpi }}
-          cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.mpi }}
+          cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cxx }}_${{ matrix.mpi }}
           build-args: BUILDKIT_INLINE_CACHE=1

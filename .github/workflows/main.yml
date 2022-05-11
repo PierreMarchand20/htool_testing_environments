@@ -73,7 +73,7 @@ jobs:
         with:
           push: true
           file: ./${{ matrix.os }}/Dockerfile
-          target: ${{ matrix.os }}_${{ matrix.cxx }}_${{ matrix.mpi }}
+          target: ${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.mpi }}
-          cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cxx }}_${{ matrix.mpi }}
+          cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           build-args: BUILDKIT_INLINE_CACHE=1

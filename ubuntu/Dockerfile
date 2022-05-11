@@ -19,10 +19,10 @@ RUN apt-get update \
     libsuitesparse-dev \
     libomp-dev \
     doxygen \
-    python3-pip python3-dev
-# && pip3 --no-cache-dir install --upgrade pip 
-# && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
-&& rm -rf /var/lib/apt/lists/*
+    python3-pip python3-dev\
+    && pip3 --no-cache-dir install --upgrade pip \
+    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
+    && rm -rf /var/lib/apt/lists/*
 
 
 FROM ubuntu_base AS ubuntu_gcc_openmpi

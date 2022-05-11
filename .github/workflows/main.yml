@@ -11,47 +11,9 @@ jobs:
   main:
     strategy:
       matrix:
-        include:
-          - name: "Ubuntu gcc OpenMPI"
-            cc: gcc
-            cxx: g++
-            mpi: openmpi
-            os: ubuntu
-          - name: "Ubuntu clang OpenMPI"
-            cc: clang
-            cxx: clang++
-            mpi: openmpi
-            os: ubuntu
-          - name: "Ubuntu gcc MPICH"
-            cc: gcc
-            cxx: g++
-            mpi: mpich
-            os: ubuntu
-          - name: "Ubuntu clang MPICH"
-            cc: clang
-            cxx: clang++
-            mpi: mpich
-            os: ubuntu
-          - name: "Ubuntu gcc OpenMPI"
-            cc: gcc
-            cxx: g++
-            mpi: openmpi
-            os: debian
-          - name: "Ubuntu clang OpenMPI"
-            cc: clang
-            cxx: clang++
-            mpi: openmpi
-            os: debian
-          - name: "Ubuntu gcc MPICH"
-            cc: gcc
-            cxx: g++
-            mpi: mpich
-            os: debian
-          - name: "Ubuntu clang MPICH"
-            cc: clang
-            cxx: clang++
-            mpi: mpich
-            os: debian
+        cc: [gcc, clang]
+        mpi: [openmpi, mpich]
+        os: [ubuntu, debian]
 
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[main skip]')"

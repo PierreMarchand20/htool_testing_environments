@@ -19,10 +19,10 @@ RUN apt-get update \
     libsuitesparse-dev \
     libomp-dev \
     doxygen \
-    python3-pip python3-dev\
-    && pip3 --no-cache-dir install --upgrade pip \
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
-    && rm -rf /var/lib/apt/lists/*
+    python3-pip python3-dev
+# && pip3 --no-cache-dir install --upgrade pip 
+# && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
+&& rm -rf /var/lib/apt/lists/*
 
 
 FROM ubuntu_base AS ubuntu_gcc_openmpi
@@ -43,8 +43,8 @@ RUN mkdir /tmp/openmpi-src \
     && CC=gcc CXX=g++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/openmpi-src && ldconfig 
+# && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -73,8 +73,8 @@ RUN mkdir /tmp/openmpi-src \
     && CC=clang CXX=clang++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/openmpi-src && ldconfig 
+# && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -104,8 +104,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=gcc CXX=g++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && rm -rf /tmp/mpich-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && rm -rf /tmp/mpich-src && ldconfig 
+# && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -133,8 +133,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=clang CXX=clang++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && rm -rf /tmp/mpich-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && rm -rf /tmp/mpich-src && ldconfig 
+# && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi

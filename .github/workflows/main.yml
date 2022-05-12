@@ -10,6 +10,7 @@ on:
 jobs:
   main:
     strategy:
+      fail-fast: false
       matrix:
         cc: [gcc, clang]
         mpi: [openmpi, mpich]

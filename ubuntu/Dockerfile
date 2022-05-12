@@ -104,7 +104,7 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=gcc CXX=g++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && rm -rf /tmp/mpich-src && ldconfig \
+    && cd && rm -rf /tmp/mpich-src && ldconfig \
     && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####
@@ -133,7 +133,7 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=clang CXX=clang++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && rm -rf /tmp/mpich-src && ldconfig \
+    && cd && rm -rf /tmp/mpich-src && ldconfig \
     && pip3 --no-cache-dir install mpi4py 
 
 #### ADD DEFAULT USER ####

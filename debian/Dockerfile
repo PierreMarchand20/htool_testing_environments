@@ -1,4 +1,4 @@
-FROM debian:buster-20200908-slim AS debian_base
+FROM debian:bullseye-20220509-slim AS debian_base
 
 WORKDIR /root
 
@@ -12,7 +12,7 @@ RUN apt-get update \
     make \
     cmake \
     gcc g++ gfortran lcov\
-    clang llvm llvm-dev\
+    clang\
     clang-format\
     libblas-dev \
     liblapack-dev \

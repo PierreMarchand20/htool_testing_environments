@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20210119 AS ubuntu_base
+FROM ubuntu:jammy-20220428 AS ubuntu_base
 
 WORKDIR /root
 
@@ -12,7 +12,7 @@ RUN apt-get update \
     make \
     cmake \
     gcc g++ gfortran lcov\
-    clang llvm llvm-dev\
+    clang\
     clang-format\
     libblas-dev \
     liblapack-dev \

@@ -31,7 +31,7 @@ FROM debian_base AS debian_gcc_openmpi
 # These options are passed to the steps below
 ARG OPENMPI_VERSION="4.1.3"
 ARG OPENMPI_MAJOR_VERSION="v4.1"
-ARG OPENMPI_CONFIGURE_OPTIONS="--disable-mpi-fortran"
+ARG OPENMPI_CONFIGURE_OPTIONS=""
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
 # Download, build, and install OPENMPI
@@ -61,7 +61,7 @@ FROM debian_base AS debian_clang_openmpi
 # These options are passed to the steps below
 ARG OPENMPI_VERSION="4.1.3"
 ARG OPENMPI_MAJOR_VERSION="v4.1"
-ARG OPENMPI_CONFIGURE_OPTIONS="--disable-mpi-fortran"
+ARG OPENMPI_CONFIGURE_OPTIONS=""
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
 # Download, build, and install OPENMPI
@@ -92,7 +92,7 @@ FROM debian_base AS debian_gcc_mpich
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
 ARG MPICH_VERSION="4.0.2"
-ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f90 --disable-fc --disable-fortran --enable-shared"
+ARG MPICH_CONFIGURE_OPTIONS="--enable-shared"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
 # Download, build, and install MPICH
@@ -122,7 +122,7 @@ FROM debian_base AS debian_clang_mpich
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
 ARG MPICH_VERSION="4.0.2"
-ARG MPICH_CONFIGURE_OPTIONS="--with-device=ch4:ofi --disable-f90 --disable-fc --disable-fortran --enable-shared"
+ARG MPICH_CONFIGURE_OPTIONS="--enable-shared"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
 # Download, build, and install MPICH

@@ -39,7 +39,6 @@ jobs:
           platforms: |-
             linux/amd64
             linux/arm64
-          file: ./${{ matrix.os }}/Dockerfile
           target: ${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}

@@ -14,6 +14,7 @@ RUN apt-get update \
     gcc g++ gfortran lcov\
     clang\
     clang-format\
+    clang-tidy\
     libblas-dev \
     liblapack-dev \
     libsuitesparse-dev \

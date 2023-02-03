@@ -15,6 +15,7 @@ jobs:
         cc: [gcc, clang]
         mpi: [openmpi, mpich]
         os: [ubuntu, debian]
+        platform: [amd64, arm64]
 
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[main skip]')"
@@ -31,14 +32,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push ${{ matrix.name }}
+      - name: Build and push
         uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:${{ matrix.os }}"
           push: true
           platforms: |-
-            linux/amd64
-            linux/arm64
+            linux/${{ matrix.platform }}
           target: ${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}
           cache-from: ${{ secrets.DOCKERHUB_USERNAME }}/htool_testing_environments:${{ matrix.os }}_${{ matrix.cc }}_${{ matrix.mpi }}

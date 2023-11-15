@@ -5,6 +5,7 @@ WORKDIR /root
 RUN apt-get update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y --no-install-recommends \
     ca-certificates \
+    locales \
     wget \
     ssh \
     libssl-dev \
@@ -20,7 +21,7 @@ RUN apt-get update \
     libsuitesparse-dev \
     libomp-dev \
     doxygen \
-    python3-pip python3-dev\
+    python3-pip python3-dev python3-venv\
     && pip3 --no-cache-dir install --upgrade pip \
     && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*

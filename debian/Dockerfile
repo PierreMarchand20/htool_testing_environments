@@ -13,7 +13,7 @@ RUN apt-get update \
     make \
     cmake \
     gcc g++ gfortran lcov\
-    clang-16\
+    clang\
     clang-format\
     clang-tidy\
     libblas-dev \

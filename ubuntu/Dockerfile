@@ -22,8 +22,13 @@ RUN apt-get update \
     liblapack-dev \
     libsuitesparse-dev \
     libomp-dev \
-    doxygen \
-    python3-pip python3-dev python3-venv
+    doxygen\
+    python3-pip python3-dev python3-venv \
+    && python3.12 -m venv .venv \
+    && .venv/bin/python -m pip install --no-cache-dir --upgrade\
+    pip pytest wheel setuptools cmakelang scipy numpy \
+    && rm -rf /var/lib/apt/lists/*
+
 
 
 FROM ubuntu_base AS ubuntu_gcc_openmpi
@@ -44,7 +49,8 @@ RUN mkdir /tmp/openmpi-src \
     && CC=gcc CXX=g++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig
+    && cd && rm -rf /tmp/openmpi-src && ldconfig \
+    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -73,7 +79,8 @@ RUN mkdir /tmp/openmpi-src \
     && CC=clang CXX=clang++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig
+    && cd && rm -rf /tmp/openmpi-src && ldconfig \
+    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -103,7 +110,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=gcc CXX=g++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && cd && rm -rf /tmp/mpich-src && ldconfig
+    && cd && rm -rf /tmp/mpich-src && ldconfig \
+    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -131,7 +139,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=clang CXX=clang++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && cd && rm -rf /tmp/mpich-src && ldconfig
+    && cd && rm -rf /tmp/mpich-src && ldconfig \
+    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi

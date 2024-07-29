@@ -21,18 +21,15 @@ RUN apt-get update \
     libsuitesparse-dev \
     libomp-dev \
     doxygen \
-    python3-pip python3-dev python3-venv\
-    && pip3 --no-cache-dir install --upgrade pip \
-    && pip3 --no-cache-dir install pytest wheel setuptools cmakelang scipy numpy \
-    && rm -rf /var/lib/apt/lists/*
+    python3-pip python3-dev python3-venv
 
 
 FROM ubuntu_base AS ubuntu_gcc_openmpi
 
 # Build Options:
 # These options are passed to the steps below
-ARG OPENMPI_VERSION="4.1.3"
-ARG OPENMPI_MAJOR_VERSION="v4.1"
+ARG OPENMPI_VERSION="5.0.5"
+ARG OPENMPI_MAJOR_VERSION="v5.0"
 ARG OPENMPI_CONFIGURE_OPTIONS=""
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
@@ -45,8 +42,7 @@ RUN mkdir /tmp/openmpi-src \
     && CC=gcc CXX=g++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/openmpi-src && ldconfig
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -61,8 +57,8 @@ FROM ubuntu_base AS ubuntu_clang_openmpi
 
 # Build Options:
 # These options are passed to the steps below
-ARG OPENMPI_VERSION="4.1.3"
-ARG OPENMPI_MAJOR_VERSION="v4.1"
+ARG OPENMPI_VERSION="5.0.5"
+ARG OPENMPI_MAJOR_VERSION="v5.0"
 ARG OPENMPI_CONFIGURE_OPTIONS=""
 ARG OPENMPI_MAKE_OPTIONS="-j4"
 
@@ -75,8 +71,7 @@ RUN mkdir /tmp/openmpi-src \
     && CC=clang CXX=clang++ ./configure ${OPENMPI_CONFIGURE_OPTIONS} \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
-    && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/openmpi-src && ldconfig
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -94,7 +89,7 @@ FROM ubuntu_base AS ubuntu_gcc_mpich
 # See installation guide of target MPICH version
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
-ARG MPICH_VERSION="4.0.2"
+ARG MPICH_VERSION="4.2.2"
 ARG MPICH_CONFIGURE_OPTIONS="FFLAGS=-fallow-argument-mismatch FCFLAGS=-fallow-argument-mismatch  --enable-shared"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
@@ -106,8 +101,7 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=gcc CXX=g++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && cd && rm -rf /tmp/mpich-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/mpich-src && ldconfig
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -123,7 +117,7 @@ FROM ubuntu_base AS ubuntu_clang_mpich
 # See installation guide of target MPICH version
 # Ex: http://www.mpich.org/static/downloads/3.4/mpich-3.4-installguide.pdf
 # These options are passed to the steps below
-ARG MPICH_VERSION="4.0.2"
+ARG MPICH_VERSION="4.2.2"
 ARG MPICH_CONFIGURE_OPTIONS="FFLAGS=-fallow-argument-mismatch FCFLAGS=-fallow-argument-mismatch --enable-shared"
 ARG MPICH_MAKE_OPTIONS="-j4"
 
@@ -135,8 +129,7 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && CC=clang CXX=clang++ ./configure ${MPICH_CONFIGURE_OPTIONS} \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
-    && cd && rm -rf /tmp/mpich-src && ldconfig \
-    && pip3 --no-cache-dir install mpi4py 
+    && cd && rm -rf /tmp/mpich-src && ldconfig
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi

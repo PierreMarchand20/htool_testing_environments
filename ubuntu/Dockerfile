@@ -14,6 +14,8 @@ RUN apt-get update \
     cmake \
     gcc g++ gfortran lcov\
     clang\
+    libclang-rt-18-dev\
+    # needed for sanitizers with clang
     clang-format\
     clang-tidy\
     libblas-dev \

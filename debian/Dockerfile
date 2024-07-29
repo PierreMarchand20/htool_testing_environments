@@ -26,7 +26,7 @@ RUN apt-get update \
     libomp-dev \
     doxygen\
     python3-pip python3-dev python3-venv \
-    && python3.12 -m venv .venv \
+    && python3.11 -m venv .venv \
     && .venv/bin/python -m pip install --no-cache-dir --upgrade\
     pip pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*

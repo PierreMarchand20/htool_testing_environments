@@ -1,4 +1,4 @@
-FROM debian:bullseye-20220509-slim AS debian_base
+FROM debian:bookworm-20240722-slim AS debian_base
 
 WORKDIR /root
 
@@ -13,7 +13,7 @@ RUN apt-get update \
     make \
     cmake \
     gcc g++ gfortran lcov\
-    clang\
+    clang-16\
     clang-format\
     clang-tidy\
     libblas-dev \

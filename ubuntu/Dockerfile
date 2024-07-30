@@ -24,8 +24,9 @@ RUN apt-get update \
     libomp-dev \
     doxygen\
     python3-pip python3-dev python3-venv \
-    && python3.12 -m venv .venv \
-    && .venv/bin/python -m pip install --no-cache-dir --upgrade\
+    && python3.12 -m venv /usr/local/share/venv \
+    && . /usr/local/share/venv/bin/activate \
+    && python -m pip install --no-cache-dir --upgrade\
     pip pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*
 
@@ -50,7 +51,8 @@ RUN mkdir /tmp/openmpi-src \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
     && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
+    && . /usr/local/share/venv/bin/activate \
+    && python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -80,7 +82,8 @@ RUN mkdir /tmp/openmpi-src \
     && make all ${OPENMPI_MAKE_OPTIONS} \ 
     && make install \
     && cd && rm -rf /tmp/openmpi-src && ldconfig \
-    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
+    && . /usr/local/share/venv/bin/activate \
+    && python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -111,7 +114,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
     && cd && rm -rf /tmp/mpich-src && ldconfig \
-    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
+    && . /usr/local/share/venv/bin/activate \
+    && python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi
@@ -140,7 +144,8 @@ RUN mkdir /tmp/mpich-src && cd /tmp/mpich-src \
     && make ${MPICH_MAKE_OPTIONS} \
     && make install \
     && cd && rm -rf /tmp/mpich-src && ldconfig \
-    && .venv/bin/python -m pip install --no-cache-dir mpi4py 
+    && . /usr/local/share/venv/bin/activate \
+    && python -m pip install --no-cache-dir mpi4py 
 
 #### ADD DEFAULT USER ####
 ARG USER=mpi

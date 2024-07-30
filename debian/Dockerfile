@@ -29,7 +29,6 @@ RUN apt-get update \
     && python3.11 -m venv /usr/local/share/venv \
     && . /usr/local/share/venv/bin/activate \
     && python -m pip install --no-cache-dir --upgrade\
-    && .venv/bin/python -m pip install --no-cache-dir --upgrade\
     pip pytest wheel setuptools cmakelang scipy numpy \
     && rm -rf /var/lib/apt/lists/*
 
